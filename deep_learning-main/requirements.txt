@@ -1,0 +1,10 @@
+docarray
+pydantic==1.10.10
+duckduckgo-search
+jupyter
+langchain
+openai==0.28
+python-dotenv
+tiktoken
+wikipedia
+openapi-pydantic

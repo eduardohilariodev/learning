@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- #region -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+      #app {
+        margin: 0 auto;
+      }
+
+      .caption {
+        text-align: right;
+        font-style: italic;
+        display: inline-block;
+      }
+
+      .category {
+        border: 1px solid gray;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 4px;
+        color: white;
+      }
+
+      .fade-enter,
+      .fade-leave-to {
+        opacity: 0;
+      }
+
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity 500ms;
+      }
+    </style>
+  </head>
+  <!-- #endregion -->
+  <body>
+    <div id="app">
+      <div class="container my-5">
+        <button class="btn btn-light mb-5" v-if="show" @click="show=!show" title="Edit">Edit</button>
+        <button class="btn btn-primary mb-5" v-if="!show" @click="save" title="Save">Save</button>
+
+        <transition name="fade" mode="out-in">
+          <div id="reading-mode" v-if="show" key="1">
+            <reading-comp
+              :title="title"
+              :author="author"
+              :date="date"
+              :category="category"
+              :theme_color="category_theme_color[category]">
+              {{article}}
+            </reading-comp>
+          </div>
+          <div id="editing-mode" v-if="!show" key="2">
+            <h1>Edit article</h1>
+            <hr />
+            <div class="input-group mb-4" :class="{'is-invalid animate__animated animate__shakeX':!remain}">
+              <label class="input-group-text">Article title</label>
+              <input class="form-control" :class="{'is-invalid':!remain}" v-model="title" @input="check" />
+              <span class="input-group-text">{{remain}}/{{limit}}</span>
+              <div class="invalid-feedback">Max number of letters used</div>
+            </div>
+            <div class="input-group mb-4">
+              <label class="input-group-text">Author name</label>
+              <input class="form-control" v-model="author" />
+            </div>
+            <div class="mb-4">
+              <label class="form-label h5 font-weight-bold">Category</label>
+              <div class="form-check" v-for="element in category_list">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" v-model="category" :value="element" />
+                  {{element}}
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="form-label h5 font-weight-bold">Article</label>
+              <textarea class="form-control" v-model="article" rows="5"></textarea>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
+
+    <template id="reading-temp">
+      <div>
+        <h1>{{title}}</h1>
+        <hr />
+        <slot></slot>
+        <hr />
+        <div style="float: right">
+          <div class="category" v-bind:style="{background: theme_color}">
+            <span>{{category}}</span>
+          </div>
+          <span>&nbsp;•&nbsp;</span>
+          <p class="caption">
+            Created by
+            <span>{{author}}</span>
+            and last edited at
+            <span>{{date}}</span>
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component("reading-comp", {
+        template: "#reading-temp",
+        props: ["title", "author", "date", "category", "theme_color"],
+        data: function () {
+          return {};
+        },
+        methods: {},
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          isInvalid: "isInvalid",
+          limit: 50,
+          show: true,
+          title: "The Cosmos Awaits ",
+          article:
+            "Courage of our questions concept of the number one billions upon billions quasar hearts of the stars are creatures of the cosmos. How far away two ghostly white figures in coveralls and helmets are softly dancing cosmic ocean a very small stage in a vast cosmic arena Sea of Tranquility stirred by starlight. From which we spring Apollonius of Perga with pretty stories for which there's little good evidence colonies two ghostly white figures in coveralls and helmets are softly dancing descended from astronomers and billions upon billions upon billions upon billions upon billions upon billions upon billions.",
+          author: "Carl Sagan",
+          date: "2022",
+          category: "Web",
+          category_list: ["Web", "Tech", "Sports", "News", "Weather", "Entertainment"],
+          category_theme_color: {
+            Web: "blue",
+            Tech: "indigo",
+            Sports: "orange",
+            News: "green",
+            Weather: "cyan",
+            Enterteinment: "yellow",
+          },
+        },
+        computed: {
+          remain: function () {
+            return this.limit - this.title.length;
+          },
+        },
+        methods: {
+          save: function () {
+            var date = new Date();
+            var year = String(date.getFullYear());
+            var year_two_digit = "'" + year.substr(2, 2);
+            var month = date.getMonth();
+
+            switch (month) {
+              case 1:
+                var month_str = "Jan";
+                break;
+              case 2:
+                var month_str = "Feb";
+                break;
+              case 3:
+                var month_str = "Mar";
+                break;
+              case 4:
+                var month_str = "Apr";
+                break;
+              case 5:
+                var month_str = "May";
+                break;
+              case 6:
+                var month_str = "Jun";
+                break;
+              case 7:
+                var month_str = "Jul";
+                break;
+              case 8:
+                var month_str = "Aug";
+                break;
+              case 9:
+                var month_str = "Sep";
+                break;
+              case 10:
+                var month_str = "Oct";
+                break;
+              case 11:
+                var month_str = "Nov";
+                break;
+              case 12:
+                var month_str = "Dec";
+                break;
+
+              default:
+                break;
+            }
+
+            var day = date.getDate();
+
+            if (day <= 9) {
+              day = "0" + day;
+            }
+
+            var hour = date.getHours();
+            if (hour <= 9) {
+              hour = "0" + hour;
+            }
+            var min = date.getMinutes();
+
+            if (min <= 9) {
+              min = "0" + min;
+            }
+            var sec = date.getSeconds();
+            if (sec <= 9) {
+              sec = "0" + sec;
+            }
+            var time = hour + min + sec;
+            var mdy = month_str + " " + day + " " + year_two_digit;
+            var hms = hour + ":" + min + ":" + sec;
+            var ymdhms = hms + " " + mdy;
+            this.date = ymdhms;
+            this.show = !this.show;
+          },
+          check: function () {
+            if (this.remain < 0) {
+              this.title = this.title.substr(0, this.limit);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

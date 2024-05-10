@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- #region -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <style>
+      .a {
+        height: 50px;
+        transition: 1s;
+      }
+    </style>
+  </head>
+  <!-- #endregion -->
+  <body>
+    <div id="app">
+      <div class="container vh-100">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="text-center">
+            <div class="a">
+              <transition
+                mode="out-in"
+                enter-active-class="animate__animated animate__zoomInDown"
+                leave-active-class="animate__animated animate__fadeOutUp">
+                <h1 class="mb-4" v-if="show">Test of the P tag transition</h1>
+              </transition>
+            </div>
+            <button class="btn btn-primary" @click="hide">Show/Hide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="temp">
+      <div></div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component("comp", {
+        template: "#temp",
+        props: [],
+        methods: {},
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: { show: true },
+        methods: {
+          hide: function () {
+            this.show = !this.show;
+            if (this.show == false) {
+              document.querySelector(".a").style.height = "0px";
+            } else {
+              document.querySelector(".a").style.height = "50px";
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

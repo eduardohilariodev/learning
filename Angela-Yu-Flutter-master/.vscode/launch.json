@@ -1,0 +1,65 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Clima",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/clima/lib/main.dart"
+    },
+
+    {
+      "name": "Navigator",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/navigation/lib/main.dart"
+    },
+    {
+      "name": "BMI Calculator",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/bmi_calculator/lib/src/main.dart"
+    },
+    {
+      "name": "Destini",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/destini/lib/main.dart"
+    },
+    {
+      "name": "Quizzler",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/quizzler/lib/main.dart"
+    },
+    {
+      "name": "Xylophone",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/xylophone/lib/main.dart"
+    },
+    {
+      "name": "Dicee",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/dicee/lib/main.dart"
+    },
+    {
+      "name": "Magic 8 Ball",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "program": "C:/Users/Eduardo/GitHub/Courses/Angela Yu/Flutter/projects/magic_8_ball/lib/main.dart"
+    }
+  ]
+}

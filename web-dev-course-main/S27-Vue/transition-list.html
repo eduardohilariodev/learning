@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- #region -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <style>
+      /* transition classes */
+      /* 1. declare transition */
+      .fade-move,
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+      }
+
+      /* 2. declare enter from and leave to state */
+      .fade-enter-from,
+      .fade-leave-to {
+        opacity: 0;
+        transform: scaleY(0.01) translate(30px, 0);
+      }
+
+      /* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+      .fade-leave-active {
+        position: absolute;
+      }
+
+      .empty-message {
+        border-radius: 8px;
+        border-style: dotted;
+        border: 2px dotted lightgray;
+        padding: 4rem 1rem 4rem 1rem;
+      }
+    </style>
+  </head>
+  <!-- #endregion -->
+  <body>
+    <div id="app">
+      <div class="container vh-100">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="my-auto text-center">
+            <div class="mb-4">
+              <h1>Simple list creator</h1>
+              <p class="text-muted">Created by Eduardo Hilário using Vue.js and Bootstrap</p>
+            </div>
+            <ul class="list-group mb-3">
+              <transition-group name="fade">
+                <li class="list-group-item" v-for="(element, index) in listInfo" :key="element + index">
+                  {{ element }}
+                </li>
+              </transition-group>
+            </ul>
+            <div v-if="listInfo.length > 0">
+              <button class="btn btn-danger mb-4 mr-3" @click="remove" key="removeOne">{{ removeLabel }}</button>
+              <button
+                class="btn btn-outline-danger mb-4 ml-3"
+                @click="removeAll"
+                key="removeAll"
+                v-if="listInfo.length > 1">
+                Remove all
+              </button>
+            </div>
+            <div v-else class="mb-5 empty-message">Oops... Try creating a list using the text box bellow 😀⬇️</div>
+            <div class="input-group">
+              <input
+                class="form-control d-inline"
+                @keyup.enter="add"
+                v-model="newItem"
+                placeholder="Add an item to the list"
+                ref="addInbox" />
+
+              <button class="btn btn-primary" @click="add">Add to list</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="temp">
+      <div></div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component("comp", {
+        template: "#temp",
+        props: [],
+        methods: {},
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          listInfo: ["List item 1", "List item 2", "List item 3"],
+          newItem: "",
+        },
+        computed: {
+          removeLabel: function () {
+            if (this.listInfo.length == 1) {
+              return "Remove";
+            } else {
+              return "Remove last item";
+            }
+          },
+        },
+        methods: {
+          add: function () {
+            if (this.newItem.length) {
+              // this will check if the input has characters, otherwise will submit and empty string
+              this.listInfo.push(this.newItem);
+              this.newItem = ""; // this cleans the input box after a push
+            }
+          },
+          remove: function () {
+            this.listInfo.pop(); // remove the last item in an array
+          },
+          removeAll: function () {
+            for (let index = 0; (index = this.listInfo.length); index++) {
+              this.listInfo.pop(); // remove the last item in an array
+              this.$refs.addInbox.focus();
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

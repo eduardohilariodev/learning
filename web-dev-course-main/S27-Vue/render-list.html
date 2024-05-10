@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- #region -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+  </head>
+  <!-- #endregion -->
+  <body>
+    <div id="app">
+      <div class="container vh-100">
+        <div class="row h-100 j ustify-content-center align-items-center">
+          <div class="my-auto text-center">
+            <list-using-render></list-using-render>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="temp">
+      <div>
+        <p
+          v-else
+          key="list">
+          No item found...
+        </p>
+        <ul
+          v-if="listInfo.length"
+          key="list">
+          <li v-for="element in listInfo">The brand is {{element.brand}} and model is {{element.model}}</li>
+        </ul>
+      </div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component("ListUsingRender", {
+        data: function () {
+          return {
+            listInfo: [
+              { brand: "Toyote", model: "Supra" },
+              { brand: "Volkswagen", model: "Gol" },
+              { brand: "Toyote", model: "Supra" },
+              { brand: "Volkswagen", model: "Gol" },
+              { brand: "Toyote", model: "Supra" },
+              { brand: "Volkswagen", model: "Gol" },
+              { brand: "Toyote", model: "Supra" },
+              { brand: "Volkswagen", model: "Gol" },
+              { brand: "Toyote", model: "Supra" },
+              { brand: "Volkswagen", model: "Gol" },
+            ],
+          };
+        },
+        render: function (createElement) {
+          if (this.listInfo.length) {
+            let textBrand = createElement("span", "The brand is ");
+            let textModel = createElement("span", " and model is ");
+            let allListInfo = this.listInfo.map(function (element) {
+              return createElement("li", [textBrand, element.brand, textModel, element.model]);
+            });
+            let ul = createElement("ul", allListInfo);
+            return createElement("div", [ul]);
+          } else {
+            let p = createElement("p", "No item found.");
+            return createElement("div", [p]);
+          }
+        },
+      });
+
+      var vm = new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>

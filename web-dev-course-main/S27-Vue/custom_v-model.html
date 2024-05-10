@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <comp v-model="msg"></comp>
+      <hr />
+      {{msg}}
+    </div>
+
+    <template id="template">
+      <input
+        v-bind:value="prop_name"
+        v-on:input="send($event.target.value)"
+      />
+    </template>
+
+    <script type="text/javascript">
+      Vue.component("comp", {
+        props: ["prop_name"],
+        model: {
+          event: "emit_event",
+          prop: "prop_name",
+        },
+        methods: {
+          send: function (v) {
+            this.$emit("emit_event", v);
+          },
+        },
+        template: "#template",
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: { msg: "apple" },
+      });
+    </script>
+  </body>
+</html>

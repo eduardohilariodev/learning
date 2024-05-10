@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        The value of the
+        <strong>msg</strong>
+        property is:
+        <strong>{{msg}}</strong>
+      </p>
+      <hr />
+      <comp v-bind:value.sync="msg"></comp>
+    </div>
+
+    <template id="temp">
+      <div>
+        <p>{{prop}}</p>
+        <input
+          v-bind:value="value"
+          v-on:input="send($event.target.value)" />
+      </div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component('comp', {
+        template: '#temp',
+        props: ['value'],
+        methods: {
+          send: function (v) {
+            this.$emit('update:value', v);
+          },
+        },
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Original message set in msg',
+        },
+        methods: {
+          alert: function () {
+            console.log('triggered');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

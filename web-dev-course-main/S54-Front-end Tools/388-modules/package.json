@@ -1,0 +1,22 @@
+{
+  "name": "388-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@types/babel__preset-env": "^7.9.2",
+    "@types/eslint": "^8.4.10",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^8.30.0",
+    "webpack": "^5.75.0"
+  }
+}

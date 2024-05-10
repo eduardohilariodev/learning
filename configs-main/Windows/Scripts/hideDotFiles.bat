@@ -1,0 +1,1 @@
+ATTRIB +H /s /d C:\Users\Eduardo\.*

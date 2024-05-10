@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript</title>
+    <style>
+      * {
+        font-size: 26px;
+        font-family: helvetica;
+        list-style: none;
+      }
+
+      #uk {
+        width: 400px;
+        height: 400px;
+        background: blue;
+        color: white;
+        position: relative;
+      }
+
+      #london {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="uk">
+      UK
+      <div id="london">London</div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var uk = document.getElementById("uk");
+    var london = document.getElementById("london");
+
+    function welcome_to_uk() {
+      console.log("welcome to the uk");
+    }
+
+    function welcome_to_london() {
+      console.log("welcome to london");
+      event.stopPropagation();
+    }
+
+    uk.addEventListener("click", welcome_to_uk, true);
+    london.addEventListener("click", welcome_to_london, true);
+  </script>
+</html>

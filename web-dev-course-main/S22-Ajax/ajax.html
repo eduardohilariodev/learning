@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn" onclick="request()">Send Ajax request</button>
+    <script type="text/javascript">
+      var ajax = new XMLHttpRequest();
+
+      function request() {
+        var url = "./interface.php";
+        ajax.onreadystatechange = response; // no parenthesis
+        ajax.open("POST", url, true); // method, url, async
+        ajax.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        ); // necessary if your are sending data using POST
+        ajax.send("name=me&msg=my message&time=2017");
+      }
+      function response() {
+        console.log("response triggered");
+      }
+    </script>
+  </body>
+</html>

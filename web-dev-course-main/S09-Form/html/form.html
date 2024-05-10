@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --blue: #2480c9;
+        --light-blue: #0098d7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .blue-bar {
+        height: 40px;
+
+        width: 100%;
+        background: -webkit-linear-gradient(
+          top,
+          var(--blue),
+          var(--light-blue)
+        );
+      }
+
+      .main {
+        background: yellow;
+        line-height: 40px;
+        height: 40px;
+        width: 1200px;
+        margin: 0 auto;
+      }
+
+      a {
+        background: -webkit-linear-gradient(
+          top,
+          var(--blue),
+          var(--light-blue)
+        );
+        text-decoration: none;
+        font-size: 24px;
+        color: white;
+        display: inline-block;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        line-height: 30px;
+      }
+      ul li {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blue-bar">
+      <div class="main">
+        <ul>
+          <li><a href="">Lorem.</a></li>
+          <li><a href="">Quae?</a></li>
+          <li><a href="">Sed.</a></li>
+          <li><a href="">Tempore.</a></li>
+          <li><a href="">Dolore!</a></li>
+          <li class="right"><a href="">Dignissimos.</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

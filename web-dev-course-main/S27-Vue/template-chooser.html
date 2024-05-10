@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <style>
+      select {
+        padding: 8px;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+      }
+      option {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container col-8 my-5">
+        <div class="text-center mb-5">
+          <h1 class="mb-3">Template chooser</h1>
+          <p class="text-muted">
+            A simple dropdown that chooses Bootstrap templates
+          </p>
+
+          <select v-model="design_selected">
+            <option v-for="elements in design_list" :value="elements.value">
+              {{elements.name}}
+            </option>
+          </select>
+        </div>
+
+        <div class="mx-auto">
+          <component
+            :is="design_selected"
+            :copy_prop="copy"
+            :image_prop="image"></component>
+        </div>
+      </div>
+    </div>
+
+    <template id="temp1">
+      <div>
+        <div class="card mx-auto mb-3">
+          <img v-bind:src="image_prop" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{copy_prop.title}}</h5>
+            <p class="card-muted">{{copy_prop.description}}</p>
+            <p class="card-text">{{copy_prop.text}}</p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template id="temp2">
+      <div>
+        <div class="card mx-auto" style="width: 18rem">
+          <img v-bind:src="image_prop" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{copy_prop.title}}</h5>
+            <p class="card-text">{{copy_prop.description}}</p>
+            <p class="card-text">{{copy_prop.text}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template id="temp3">
+      <div>
+        <div class="card mx-auto">
+          <div class="card-body">
+            <h5 class="card-title">{{copy_prop.title}}</h5>
+            <p class="card-text">{{copy_prop.description}}</p>
+            <p class="card-text">{{copy_prop.text}}</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script type="text/javascript">
+      Vue.component('bigDesign', {
+        template: '#temp1',
+        props: ['image_prop', 'copy_prop'],
+      });
+      Vue.component('smallDesign', {
+        template: '#temp2',
+        props: ['image_prop', 'copy_prop'],
+      });
+      Vue.component('imagelessDesign', {
+        template: '#temp3',
+        props: ['image_prop', 'copy_prop'],
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          design_selected: 'bigDesign',
+          design_list: [
+            { name: 'bigDesign', value: 'bigDesign' },
+            { name: 'smallDesign', value: 'smallDesign' },
+            { name: 'imagelessDesign', value: 'imagelessDesign' },
+          ],
+          image: 'https://loremflickr.com/320/240/cat',
+          copy: {
+            title: 'Title in Vue data',
+            description: 'Description in Vue data',
+            text: 'Text in Vue data.',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<!-- https://loremflickr.com/320/240/dog -->

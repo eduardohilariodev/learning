@@ -1,0 +1,22 @@
+{
+  "name": "hello-world-npm-project",
+  "version": "1.1.1",
+  "description": "Project from the Udemy course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" ",
+    "sayhi": "echo \"Hello world!\""
+  },
+  "keywords": [
+    "Project",
+    "Udemy"
+  ],
+  "author": "Eduardo Hilário",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.6.1"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
