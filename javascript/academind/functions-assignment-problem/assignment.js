@@ -3,24 +3,34 @@ const sayHello = (name) => console.log("Hi " + name);
 // With two arguments (incl. a phrase that replaces "Hi")
 //   Add a default argument to the function you created: A fallback value for
 //   the phrase if no value is provided.
-const sayPhrase = (phrase = "Hi ", name) => {
-  console.log(phrase + name);
-};
-
+const sayPhrase = (phrase = "Hi ", name) => console.log(phrase + name);
 // with no arguments (hard-coded values in function body)
-const sayHardcoded = () => {
-  console.log("Hi " + "Eduardo");
-};
-
+const sayHardcoded = () => console.log("Hi " + "Eduardo");
 // with one returned value (instead of outputting text inside of the function
 // directly)
 const sayDirect = (phrase, name) => phrase + name;
 
 const checkInput = (callback, ...args) => {
-  if (!args) {
+  let hasEmptyText = false;
+  for (const text of args) {
+    if (!text) {
+      hasEmptyText = true;
+      break;
+    }
+  }
+  if (!hasEmptyText) {
     callback();
   }
 };
+checkInput(
+  () => {
+    console.log("All not empty");
+  },
+  "Hello",
+  "",
+  "from",
+  "mars"
+);
 
 // X  Re-write the function you find in assignment.js as an arrow function.
 
