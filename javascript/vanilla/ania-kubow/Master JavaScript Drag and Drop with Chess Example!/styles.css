@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+}
+
+.beige {
+  background-color: rgb(227, 227, 199);
+}
+.brown {
+  background-color: rgb(96, 54, 54);
+}
+
+#gameboard {
+  display: flex;
+}
+
+#info {
+  height: 30px;
+}
+
+.chess-piece {
+  width: 200px;
+  height: 200px;
+}
