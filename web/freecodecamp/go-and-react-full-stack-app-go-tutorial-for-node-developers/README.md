@@ -6,6 +6,7 @@
   - [About Go](#about-go)
     - [Package](#package)
     - [Modules used in the project](#modules-used-in-the-project)
+    - [Memory](#memory)
 
 ## Tech Stack
 
@@ -50,3 +51,17 @@ module
   This is a web server framework for Go.
 - [Air](github.com/cosmtrek/air@latest)
   This is a live reload tool for Go.
+
+### Memory
+
+```go
+ var foo int = 5
+ var bar *int = &foo
+```
+
+| **Address** | **Value** | **Variable** |
+| ----------- | --------- | ------------ |
+| 0x1000      | 5         | foo          |
+| 0x1004      | 0x1000    | bar          |
+| 0x1008      |           |              |
+| 0x1012      |           |              |

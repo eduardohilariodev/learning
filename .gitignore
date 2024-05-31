@@ -23,6 +23,7 @@ node_modules/
 *.rar
 
 # Compiled files
+tmp/
 target/
 tomcat*/
 dependency-reduced-pom.xml
