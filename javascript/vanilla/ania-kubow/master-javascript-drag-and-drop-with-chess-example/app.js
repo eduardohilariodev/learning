@@ -75,7 +75,12 @@ const dragDrop = (event) => {
  * @param {DragEvent} event - The drag end event object.
  */
 const dragEnd = (event) => {
+  event.target.classList.add("target");
+  setTimeout(() => {
+    event.target.classList.remove("target");
+  }, 100);
   console.info(`The drag has ended in ${event.target.classList}`);
+  infoDisplay.textContent = "";
 };
 
 king.addEventListener("drag", dragging);
