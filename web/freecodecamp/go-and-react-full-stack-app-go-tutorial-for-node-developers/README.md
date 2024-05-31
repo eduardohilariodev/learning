@@ -1,12 +1,17 @@
 # Go and React Full Stack App – Go Tutorial for Node Developers
 
 - [Go and React Full Stack App – Go Tutorial for Node Developers](#go-and-react-full-stack-app--go-tutorial-for-node-developers)
-  - [Tech Stack](#tech-stack)
   - [Resources](#resources)
+  - [Tech Stack](#tech-stack)
+  - [Roadmap](#roadmap)
+  - [Modules](#modules)
   - [About Go](#about-go)
     - [Package](#package)
-    - [Modules used in the project](#modules-used-in-the-project)
     - [Memory](#memory)
+
+## Resources
+
+[Tutorial](https://www.youtube.com/watch?v=lNd7XlXwlho)
 
 ## Tech Stack
 
@@ -19,9 +24,21 @@
 | Data fetching | TanStack Query     |
 | Hosting       | Railway            |
 
-## Resources
+## Roadmap
 
-[Tutorial](https://www.youtube.com/watch?v=lNd7XlXwlho)
+1. Implement a simple Go server, that first saves data to memory. This configures Fiber, Air, Dotenv and 5 CRUD routes.
+2. Implement a MongoDB database and connect it to the Go server. This configures a cluster, installs the Go MongoDB driver.
+
+## Modules
+
+- [Fiber](github.com/gofiber/fiber/v2)  
+  This is a web server framework for Go.
+- [Air](github.com/cosmtrek/air@latest)  
+  This is a live reload tool for Go.
+- [Dotenv](github.com/joho/godotenv)  
+  This is a Go port of the Ruby dotenv library.
+- [MongoDB Go Driver](go.mongodb.org/mongo-driver/mongo)  
+  This is the official Go driver for MongoDB.
 
 ## About Go
 
@@ -44,15 +61,6 @@ module
 └─api   <- package
     api.go
 ```
-
-### Modules used in the project
-
-- [Fiber](github.com/gofiber/fiber/v2)  
-  This is a web server framework for Go.
-- [Air](github.com/cosmtrek/air@latest)  
-  This is a live reload tool for Go.
-- [Dotenv](github.com/joho/godotenv)  
-  This is a Go port of the Ruby dotenv library.
 
 ### Memory
 

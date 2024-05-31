@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func memory() {
 
 	// The variable foo is, for example, stored on the address 0x00001
 	var foo int = 5
