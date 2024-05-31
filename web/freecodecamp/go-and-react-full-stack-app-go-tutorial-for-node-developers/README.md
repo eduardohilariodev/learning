@@ -47,10 +47,12 @@ module
 
 ### Modules used in the project
 
-- [Fiber](github.com/gofiber/fiber/v2)
+- [Fiber](github.com/gofiber/fiber/v2)  
   This is a web server framework for Go.
-- [Air](github.com/cosmtrek/air@latest)
+- [Air](github.com/cosmtrek/air@latest)  
   This is a live reload tool for Go.
+- [Dotenv](github.com/joho/godotenv)  
+  This is a Go port of the Ruby dotenv library.
 
 ### Memory
 
