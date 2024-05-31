@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -16,9 +17,18 @@ import (
 type Todo struct {
 	// MongoDB uses Binary JSON (bson) to store data, this is why it's been double
 	// declared on this struct.
-	Id        int    `json:"id" bson:"_id"`
-	Completed bool   `json:"completed"`
-	Body      string `json:"body"`
+	//
+	// Why is the `omitempty` option used on the Todo struct tag?
+	//
+	// To omit empty values such as
+	// {
+	//	 "id": "000000000000000000000000",
+	//   "completed": false,
+	//   "body": "Learn Go"
+	// }
+	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Completed bool               `json:"completed"`
+	Body      string             `json:"body"`
 }
 
 var collection *mongo.Collection
@@ -62,7 +72,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/api/todos", listTodos)
-	// app.Post("/api/todos", createTodos)
+	app.Post("/api/todos", createTodo)
 	// app.Patch("/api/todos/:id", updateTodos)
 	// app.Delete("/api/todos/:id", deleteTodos)
 
@@ -114,4 +124,32 @@ func listTodos(c *fiber.Ctx) error {
 	}
 	// c stands for Fiber context
 	return c.JSON(todos)
+}
+
+func createTodo(c *fiber.Ctx) error {
+	todo := new(Todo)
+
+	// What does `BodyParser` do?
+	//
+	// It binds the body of the request to the `todo` struct
+	if err := c.BodyParser(todo); err != nil {
+		return err
+	}
+
+	if todo.Body == "" {
+		return c.Status(400).JSON(fiber.Map{"error": "Todo body cannot be empty"})
+	}
+
+	insertResult, err := collection.InsertOne(context.Background(), todo)
+
+	if err != nil {
+		return err
+	}
+
+	todo.ID = insertResult.InsertedID.(primitive.ObjectID)
+
+	// What does the status 201 means?
+	//
+	// A resource has been created.
+	return c.Status(201).JSON(todo)
 }
