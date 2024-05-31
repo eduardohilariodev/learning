@@ -5,6 +5,7 @@
   - [Resources](#resources)
   - [About Go](#about-go)
     - [Package](#package)
+    - [Modules used in the project](#modules-used-in-the-project)
 
 ## Tech Stack
 
@@ -42,3 +43,10 @@ module
 └─api   <- package
     api.go
 ```
+
+### Modules used in the project
+
+- [Fiber](github.com/gofiber/fiber/v2)
+  This is a web server framework for Go.
+- [Air](github.com/cosmtrek/air@latest)
+  This is a live reload tool for Go.
