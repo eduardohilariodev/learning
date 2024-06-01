@@ -29,9 +29,15 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
       }
     },
     /**
-     * What's the purpose of `onSuccess` here?
+     * What's the purpose of `queryClient.invalidateQueries` on `onSuccess`
+     * here?
      *
-     * To invalidate some queries.
+     * To invalidate queries.
+     *
+     * What this means?
+     *
+     * It means that the previous `listTodos` query can be considered invalid,
+     * with out of date information.
      *
      * Because `mutationKey` of `TodoList` is set to `todos`, when can as
      * Tanstack to refetch that query once this one succeedes.
