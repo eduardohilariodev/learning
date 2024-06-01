@@ -2,7 +2,7 @@ import { Badge, Box, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { BASE_URL } from "../App";
+import { BASE_URL } from "../contants";
 import { Todo } from "./TodoList";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
