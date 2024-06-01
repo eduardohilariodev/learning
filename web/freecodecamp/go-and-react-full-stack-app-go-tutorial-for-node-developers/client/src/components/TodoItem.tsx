@@ -1,12 +1,12 @@
 import { Badge, Box, Flex, Spinner, Text } from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { BASE_URL } from "../App";
 import { Todo } from "./TodoList";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
-  const test = null;
+  const queryClient = useQueryClient();
   const { mutate: updateTodo, isPending: isUpdating } = useMutation({
     mutationKey: ["updateTodo"],
     mutationFn: async () => {
@@ -27,6 +27,17 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
       } catch (error) {
         console.error(error);
       }
+    },
+    /**
+     * What's the purpose of `onSuccess` here?
+     *
+     * To invalidate some queries.
+     *
+     * Because `mutationKey` of `TodoList` is set to `todos`, when can as
+     * Tanstack to refetch that query once this one succeedes.
+     */
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
   });
   return (

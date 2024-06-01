@@ -57,8 +57,8 @@ const TodoList = () => {
         </Stack>
       )}
       <Stack gap={3}>
-        {todos?.map((todo, index) => (
-          <TodoItem key={index} todo={todo} />
+        {todos?.map((todo) => (
+          <TodoItem key={todo._id} todo={todo} />
         ))}
       </Stack>
     </>
