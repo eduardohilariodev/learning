@@ -1,9 +1,34 @@
-import { Badge, Box, Flex, Text } from "@chakra-ui/react";
+import { Badge, Box, Flex, Spinner, Text } from "@chakra-ui/react";
+import { useMutation } from "@tanstack/react-query";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { BASE_URL } from "../App";
 import { Todo } from "./TodoList";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
+  const test = null;
+  const { mutate: updateTodo, isPending: isUpdating } = useMutation({
+    mutationKey: ["updateTodo"],
+    mutationFn: async () => {
+      if (todo.completed) {
+        return alert("Todo is already completed");
+      }
+      try {
+        const response = await fetch(`${BASE_URL}/todos/${todo._id}`, {
+          method: "PATCH",
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong");
+        }
+
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
   return (
     <Flex gap={2} alignItems={"center"}>
       <Flex
@@ -21,20 +46,23 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
         >
           {todo.body}
         </Text>
-        {todo.completed && (
+        {todo.completed ? (
           <Badge ml="1" colorScheme="green">
             Done
           </Badge>
-        )}
-        {!todo.completed && (
+        ) : (
           <Badge ml="1" colorScheme="yellow">
             In Progress
           </Badge>
         )}
       </Flex>
       <Flex gap={2} alignItems={"center"}>
-        <Box color={"green.500"} cursor={"pointer"}>
-          <FaCheckCircle size={20} />
+        <Box
+          color={"green.500"}
+          cursor={"pointer"}
+          onClick={() => updateTodo()}
+        >
+          {isUpdating ? <Spinner size={"sm"} /> : <FaCheckCircle size={20} />}
         </Box>
         <Box color={"red.500"} cursor={"pointer"}>
           <MdDelete size={25} />

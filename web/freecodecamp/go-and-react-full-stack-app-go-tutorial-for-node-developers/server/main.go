@@ -27,7 +27,7 @@ type Todo struct {
 	//   "completed": false,
 	//   "body": "Learn Go"
 	// }
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	Completed bool               `json:"completed"`
 	Body      string             `json:"body"`
 }
