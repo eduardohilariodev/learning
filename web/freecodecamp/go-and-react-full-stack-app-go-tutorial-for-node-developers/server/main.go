@@ -36,7 +36,7 @@ var collection *mongo.Collection
 func main() {
 	fmt.Println()
 
-	if os.Getenv("ENV") != "production" {
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); exists == false {
 		// We can't load a `.env` file in a production environment
 		err := godotenv.Load(".env")
 		if err != nil {
