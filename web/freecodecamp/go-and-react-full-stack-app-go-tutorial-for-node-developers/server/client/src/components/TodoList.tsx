@@ -12,6 +12,8 @@ export type Todo = {
 const TodoList = () => {
   const { data: todos, isLoading } = useQuery<Todo[]>({
     /**
+     *
+     *
      * `queryKey` is an identifier for this query. In case of refetching, it'll
      * use this query key to do it.
      */
