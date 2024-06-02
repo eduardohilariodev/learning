@@ -93,10 +93,7 @@ func main() {
 
 	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT_NAME"); exists {
 		fmt.Println("USING static files")
-		app.Static("/", "../client/dist", fiber.Static{
-			Browse: true,
-			Index:  "",
-		})
+		app.Static("/", "./client/dist")
 	} else {
 		fmt.Println("NOT using static files")
 	}
