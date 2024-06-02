@@ -85,19 +85,17 @@ func main() {
 	app.Patch("/api/todos/:id", updateTodo)
 	app.Delete("/api/todos/:id", deleteTodo)
 
-	port := os.Getenv("PORT")
-
-	if port == "" {
-		port = "4000"
-	}
+	var port string
 
 	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT_NAME"); exists {
 		fmt.Println("USING static files")
 		app.Static("/", "../client/dist", fiber.Static{
 			Index: "",
 		})
+		port = "80"
 	} else {
 		fmt.Println("NOT using static files")
+		port = "4000"
 	}
 
 	log.Fatal(app.Listen("0.0.0.0:" + port))
