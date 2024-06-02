@@ -91,7 +91,7 @@ func main() {
 		port = "4000"
 	}
 
-	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); exists {
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT_NAME"); exists {
 		app.Static("/", "../client/dist")
 	}
 
