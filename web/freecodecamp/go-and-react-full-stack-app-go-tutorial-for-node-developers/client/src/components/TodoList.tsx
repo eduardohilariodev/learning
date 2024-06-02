@@ -1,5 +1,6 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
+import { BASE_URL } from "../contants";
 import TodoItem from "./TodoItem";
 
 export type Todo = {
@@ -17,7 +18,7 @@ const TodoList = () => {
     queryKey: ["todos"],
     queryFn: async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/todos");
+        const response = await fetch(BASE_URL + "/todos");
         const data = await response.json();
 
         if (!response.ok) {
