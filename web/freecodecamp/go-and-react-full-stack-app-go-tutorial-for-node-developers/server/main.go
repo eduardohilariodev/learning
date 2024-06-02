@@ -36,7 +36,7 @@ var collection *mongo.Collection
 func main() {
 	fmt.Println()
 
-	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); exists == false {
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); !exists {
 		// We can't load a `.env` file in a production environment
 		err := godotenv.Load(".env")
 		if err != nil {
@@ -91,7 +91,7 @@ func main() {
 		port = "4000"
 	}
 
-	if os.Getenv("ENV") == "production" {
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); exists {
 		app.Static("/", "../client/dist")
 	}
 
