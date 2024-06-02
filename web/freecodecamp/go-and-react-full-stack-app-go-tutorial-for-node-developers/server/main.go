@@ -92,7 +92,10 @@ func main() {
 	}
 
 	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT_NAME"); exists {
+		fmt.Println("USING static files")
 		app.Static("/", "../client/dist")
+	} else {
+		fmt.Println("NOT using static files")
 	}
 
 	log.Fatal(app.Listen("0.0.0.0:" + port))
