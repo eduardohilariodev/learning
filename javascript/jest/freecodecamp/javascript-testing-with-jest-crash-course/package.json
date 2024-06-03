@@ -1,13 +1,12 @@
 {
   "name": "javascript-testing-with-jest-crash-course",
-  "module": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "@types/bun": "latest",
     "jest": "^29.7.0"
   },
   "scripts": {
-    "jest": ""
+    "test": "jest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
