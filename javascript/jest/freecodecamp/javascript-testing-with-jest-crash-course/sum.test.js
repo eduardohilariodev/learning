@@ -1,21 +1,21 @@
-const { sum } = require("./sum");
+const { sum, throwsErrorFn } = require(".");
 
 /* -------------------------------------------------------------------------- */
 /*                                  MATCHERS                                  */
 /* -------------------------------------------------------------------------- */
 
 /* --------------------------------- TOBE() --------------------------------- */
-test("add 1 + 2 to equal 3", () => {
+test("should return three when one sums 2", () => {
   /** `.toBe()` is a **matcher** */
   expect(sum(1, 2)).toBe(3);
 });
 
-test("two plus two is four", () => {
+test("should return for when two sum two", () => {
   expect(2 + 2).toBe(4);
 });
 
 /* -------------------------------- TOEQUAL() ------------------------------- */
-test("object assignment", () => {
+test("should assign property to object", () => {
   const data = { one: 1 };
   data["two"] = 2;
   expect(data).toEqual({ one: 1, two: 2 });
@@ -36,4 +36,12 @@ test("should return falsy when checking zero", () => {
 test("should return truthy when checking a positive integer", () => {
   const foo = 1;
   expect(foo).toBeTruthy();
+});
+
+/* ---------------------------------- THROW --------------------------------- */
+test("should throw an invalid input", () => {
+  expect(() => {
+    const foo = "1";
+    throwsErrorFn(foo);
+  }).toThrow();
 });
