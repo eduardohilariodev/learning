@@ -1,6 +1,6 @@
 {
   "name": "javascript-testing-with-jest-crash-course",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
     "jest": "^29.7.0"
