@@ -1,4 +1,4 @@
-const { sum, throwsErrorFn } = require(".");
+const { sum, throwsErrorFn } = require("./fundamentals");
 
 /* -------------------------------------------------------------------------- */
 /*                                  MATCHERS                                  */
