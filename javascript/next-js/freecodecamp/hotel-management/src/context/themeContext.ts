@@ -1,9 +1,10 @@
-import { Dispatch, SetStateAction, createContext } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { createContext } from "react";
 
-type ThemeContextType = {
+interface ThemeContextType {
   darkTheme: boolean;
   setDarkTheme: Dispatch<SetStateAction<boolean>>;
-};
+}
 
 const ThemeContext = createContext<ThemeContextType>({
   darkTheme: false,
