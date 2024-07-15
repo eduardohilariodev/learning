@@ -2,7 +2,7 @@ import { defineField } from "sanity";
 
 const user = {
   name: "user",
-  title: "user",
+  title: "User",
   type: "document",
   fields: [
     defineField({
@@ -40,4 +40,4 @@ const user = {
   ],
 };
 
-export default user
+export default user;
