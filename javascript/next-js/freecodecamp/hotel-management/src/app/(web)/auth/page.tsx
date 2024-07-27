@@ -1,12 +1,13 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { signUp } from "next-auth-sanity/client";
 import { signIn, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const defaultFormData = {
   email: "",
@@ -22,6 +23,26 @@ const Auth = () => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/");
+    }
+  }, [router, session]);
+
+  const loginHandler = async () => {
+    try {
+      await signIn();
+      router.push("/");
+    } catch (e) {
+      console.error(e);
+      toast.error("Something went wrong");
+    }
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -47,9 +68,15 @@ const Auth = () => {
           </h1>
           <p>OR</p>
           <span className="inline-flex items-center">
-            <AiFillGithub className="mr-3 cursor-pointer text-4xl text-black dark:text-white" />
+            <AiFillGithub
+              onClick={loginHandler}
+              className="mr-3 cursor-pointer text-4xl text-black dark:text-white"
+            />
             <span>|</span>
-            <FcGoogle className="ml-3 cursor-pointer text-4xl" />
+            <FcGoogle
+              onClick={loginHandler}
+              className="ml-3 cursor-pointer text-4xl"
+            />
           </span>
         </div>
         <form
@@ -91,7 +118,11 @@ const Auth = () => {
           >
             Sign Up
           </button>
-          <button type="submit" className="text-blue-500 underline">
+          <button
+            onClick={loginHandler}
+            type="submit"
+            className="text-blue-500 underline"
+          >
             Login
           </button>
         </form>
