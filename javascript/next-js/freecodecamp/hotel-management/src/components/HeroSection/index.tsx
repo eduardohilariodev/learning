@@ -11,7 +11,12 @@ const HeroSection = () => {
           Get Started
         </button>
 
-        <div className="mt-12 flex justify-between"></div>
+        <div className="mt-12 flex justify-between">
+          <div className="flex flex-col justify-center gap-3">
+            <p className="text-center text-xs lg:text-xl">Basic Room</p>
+            p.
+          </div>
+        </div>
       </div>
       {/* IMAGES */}
     </section>
