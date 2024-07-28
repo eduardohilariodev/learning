@@ -17,6 +17,9 @@ console.debug(testResults.lastIndexOf(1.5));
 const personData = [{ name: "Max" }, { name: "Manuel" }];
 console.debug(personData.indexOf({ name: "Manuel" }));
 
+console.debug(testResults.includes(10.99));
+console.debug(testResults.indexOf(10.99) !== -1);
+
 const manuel = personData.find((person, index, persons) => {
   return person.name === "Manuel";
 });
