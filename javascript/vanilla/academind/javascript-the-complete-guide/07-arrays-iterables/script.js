@@ -5,33 +5,50 @@
 // hobbies.shift();
 // console.debug(hobbies);
 
-const testResults = [1, 5.3, 1.5, 10.99, -5, 1.5, 10];
+// const testResults = [1, 5.3, 1.5, 10.99, -5, 1.5, 10];
 
-const storedResults = testResults.concat([3.99, 2]);
+// const storedResults = testResults.concat([3.99, 2]);
 
-testResults.push(5.91);
+// testResults.push(5.91);
 
-console.debug(storedResults, testResults);
-console.debug(testResults.lastIndexOf(1.5));
+// console.debug(storedResults, testResults);
+// console.debug(testResults.lastIndexOf(1.5));
 
-const personData = [{ name: "Max" }, { name: "Manuel" }];
-console.debug(personData.indexOf({ name: "Manuel" }));
+// const personData = [{ name: "Max" }, { name: "Manuel" }];
+// console.debug(personData.indexOf({ name: "Manuel" }));
 
-console.debug(testResults.includes(10.99));
-console.debug(testResults.indexOf(10.99) !== -1);
+// console.debug(testResults.includes(10.99));
+// console.debug(testResults.indexOf(10.99) !== -1);
 
-const manuel = personData.find((person, index, persons) => {
-  return person.name === "Manuel";
+// const manuel = personData.find((person, index, persons) => {
+//   return person.name === "Manuel";
+// });
+
+// manuel.name = "Anna";
+
+// console.debug(manuel, personData);
+
+// const foo = null;
+
+// const maxIndex = personData.findIndex((person) => {
+//   return person.name === "Max";
+// });
+
+// console.debug(maxIndex);
+
+const prices = [10.99, 5.99, 3.99, 6.59];
+
+const tax = 0.19;
+
+const taxAdjustedPrices = [];
+
+// for (const price of prices) {
+//   taxAdjustedPrices.push(price * (1 + tax));
+// }
+
+prices.forEach((price, index, prices) => {
+  const priceObj = { index, taxAdjustedPrices: price * (1 + tax) };
+  taxAdjustedPrices.push(priceObj);
 });
 
-manuel.name = "Anna";
-
-console.debug(manuel, personData);
-
-const foo = null;
-
-const maxIndex = personData.findIndex((person) => {
-  return person.name === "Max";
-});
-
-console.debug(maxIndex);
+console.debug(taxAdjustedPrices);
