@@ -9,3 +9,19 @@
 .scale-animation {
   @apply transition-all duration-700 hover:scale-125;
 }
+
+.btn-primary {
+  @apply rounded-lg bg-primary px-6 py-2 text-base font-bold text-white shadow-sm shadow-primary transition-all duration-300 hover:scale-110 md:rounded-2xl md:px-[50px] md:py-5 md:text-xl lg:px-[72px];
+}
+
+.btn-tertiary {
+  @apply rounded-lg bg-tertiary-light px-6 py-2 text-base font-bold text-white shadow-sm shadow-tertiary-light transition-all duration-300 hover:scale-110 md:rounded-2xl md:px-[50px] md:py-5 md:text-xl lg:px-[72px];
+}
+
+.font-heading {
+  @apply text-3xl font-medium md:text-6xl md:font-semibold;
+}
+
+.font-normal {
+  @apply text-sm md:text-base;
+}

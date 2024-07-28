@@ -24,10 +24,12 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: async ({ session, token }) => {
       const userEmail = token.email;
+
       const userIdObj = await sanityClient.fetch<{ _id: string }>(
         `*[_type == "user" && email == $email][0] { _id }`,
         { email: userEmail },
       );
+      console.debug("🚀 ~ file: auth.ts:27 ~ session: ~ userEmail:", userEmail);
 
       return {
         ...session,
