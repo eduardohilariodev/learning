@@ -53,7 +53,7 @@
 
 // console.debug(taxAdjustedPrices);
 
-// const prices = [10.99, 5.99, 3.99, 6.59];
+const prices = [10.99, 5.99, 3.99, 6.59];
 // const tax = 0.19;
 
 // const taxAdjustedPrices = prices.map((price, index, prices) => {
@@ -96,6 +96,26 @@
 
 // console.debug(transformedData);
 
-// const nameFragments = ["Eduardo", "Hilário"];
-// const name = nameFragments.join(" ");
-// console.debug(name);
+const nameFragments = ["Eduardo", "Hilário"];
+const name = nameFragments.join(" ");
+console.debug(name);
+
+const copiedNameFragments = [...nameFragments];
+nameFragments.push("Mr.");
+console.debug(nameFragments, copiedNameFragments);
+
+console.debug(Math.min(...prices));
+
+const persons = [
+  { name: "Max", age: 30 },
+  { name: "Manuel", age: 31 },
+];
+const copiedPersons = persons.map((person) => ({
+  name: person.name,
+  age: person.age,
+}));
+persons.push({ name: "Anna", age: 29 });
+
+persons[0].age = 31;
+
+console.debug(persons, copiedPersons);
