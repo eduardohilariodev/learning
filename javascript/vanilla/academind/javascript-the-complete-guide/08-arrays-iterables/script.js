@@ -120,8 +120,8 @@
 
 // console.debug(persons, copiedPersons);
 
-const nameData = ["Eduardo", "Hilario", "Mr", 30];
+// const nameData = ["Eduardo", "Hilario", "Mr", 30];
 
-const [firstName, lastName, ...otherInfo] = nameData;
+// const [firstName, lastName, ...otherInfo] = nameData;
 
-console.debug(firstName, lastName, otherInfo);
+// console.debug(firstName, lastName, otherInfo);
