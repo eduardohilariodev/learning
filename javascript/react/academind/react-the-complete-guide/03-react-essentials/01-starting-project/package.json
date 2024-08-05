@@ -1,6 +1,7 @@
 {
   "name": "react-essentials-start",
   "version": "0.0.0",
+  "packageManager": "bun@1.20.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
