@@ -1,11 +1,7 @@
-const TabButton = ({ children }) => {
-  const handleClick = () => {
-    console.debug("Hello world!");
-  };
-
+const TabButton = ({ children, onSelect }) => {
   return (
     <li>
-      <button onClick={handleClick}>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
   );
 };
