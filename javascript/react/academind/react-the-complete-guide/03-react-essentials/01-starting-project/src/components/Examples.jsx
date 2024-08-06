@@ -39,26 +39,26 @@ const Examples = () => {
       <menu>
         <TabButton
           isSelected={selectedTopic === topics.COMPONENTS}
-          onSelect={() => handleSelect(topics.COMPONENTS)}
+          onClick={() => handleSelect(topics.COMPONENTS)}
         >
           Components
         </TabButton>
 
         <TabButton
           isSelected={selectedTopic === topics.JSX}
-          onSelect={() => handleSelect(topics.JSX)}
+          onClick={() => handleSelect(topics.JSX)}
         >
           JSX
         </TabButton>
         <TabButton
           isSelected={selectedTopic === topics.PROPS}
-          onSelect={() => handleSelect(topics.PROPS)}
+          onClick={() => handleSelect(topics.PROPS)}
         >
           Props
         </TabButton>
         <TabButton
           isSelected={selectedTopic === topics.STATE}
-          onSelect={() => handleSelect(topics.STATE)}
+          onClick={() => handleSelect(topics.STATE)}
         >
           State
         </TabButton>
