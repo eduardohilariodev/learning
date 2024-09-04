@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
+import Log from "./components/Log";
 
 export default function App() {
   const [gameTurns, setGameTurns] = useState([]);
@@ -16,7 +17,7 @@ export default function App() {
       }
 
       const updatedTurns = [
-        { square: { row: rowIndex, col: colIndex }, player: activePlayer },
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurns,
       ];
 
@@ -25,26 +26,29 @@ export default function App() {
   }
 
   return (
-    <div id="game-container">
-      <ol
-        id="players"
-        className="highlight-player"
-      >
-        <Player
-          initialName="Player 1"
-          symbol="X"
-          isActive={activePlayer === "X"}
+    <main>
+      <div id="game-container">
+        <ol
+          id="players"
+          className="highlight-player"
+        >
+          <Player
+            initialName="Player 1"
+            symbol="X"
+            isActive={activePlayer === "X"}
+          />
+          <Player
+            initialName="Player 2"
+            symbol="O"
+            isActive={activePlayer === "O"}
+          />
+        </ol>
+        <GameBoard
+          onSelectSquare={handleSelectSquare}
+          turns={gameTurns}
         />
-        <Player
-          initialName="Player 2"
-          symbol="O"
-          isActive={activePlayer === "O"}
-        />
-      </ol>
-      <GameBoard
-        onSelectSquare={handleSelectSquare}
-        activePlayerSymbol={activePlayer}
-      />
-    </div>
+      </div>
+      <Log />
+    </main>
   );
 }
