@@ -12,17 +12,18 @@ export default function Result({ results, userInput }) {
     return formatter.format(investedCapital);
   }
 
-  function getTotalInterest({ data, year }) {
-    for (const key in userInput) {
-      if (!userInput.key) {
-        return;
-      }
-    }
-
+  function getTotalInterest({ year }) {
+    // let hasAllUserInputs = true;
+    // for (const key in userInput) {
+    //   if (!userInput[key]) {
+    //     hasAllUserInputs = false;
+    //     return;
+    //   }
+    // }
     let totalInterest = 0;
 
     for (let index = 0; index < year; index++) {
-      totalInterest += Number(data[index].interest);
+      totalInterest += Number(results[index].interest);
     }
 
     return formatter.format(totalInterest);
@@ -45,7 +46,7 @@ export default function Result({ results, userInput }) {
             <td>{data.year}</td>
             <td>{formatter.format(data.valueEndOfYear ?? 0)}</td>
             <td>{formatter.format(data.interest ?? 0)}</td>
-            <td>{getTotalInterest({ data, year: data.year })}</td>
+            <td>{getTotalInterest({ year: data.year })}</td>
             <td>
               {getInvestedCapital({
                 annualInvestment: data.annualInvestment,

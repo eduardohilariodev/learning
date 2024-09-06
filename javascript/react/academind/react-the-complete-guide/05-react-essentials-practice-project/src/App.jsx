@@ -30,14 +30,14 @@ function App() {
     const calculatedResults = calculateInvestmentResults(userInput);
     setResults(calculatedResults);
 
-    let hasAllUserInputs = true;
+    let isUserInputValid = true;
     for (const key in userInput) {
-      if (!userInput[key]) {
-        hasAllUserInputs = false;
+      if (!userInput[key] || Number(userInput.duration) < 0) {
+        isUserInputValid = false;
         break;
       }
     }
-    setHasUserInput(hasAllUserInputs);
+    setHasUserInput(isUserInputValid);
   }, [userInput]);
 
   function handleChangeUserInput(value) {
