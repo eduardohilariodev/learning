@@ -1,0 +1,28 @@
+@use "variables" as *;
+
+@each $key, $val in $colors {
+  .text-#{$key} {
+    color: $val;
+  }
+  .bg-#{$key} {
+    background: $val;
+  }
+
+  @for $i from 1 through 9 {
+    // light
+    .text-#{$key}-light-#{$i} {
+      color: mix(white, $val, $i * 10%);
+    }
+    .bg-#{$key}-light-#{$i} {
+      background-color: mix(white, $val, $i * 10%);
+    }
+
+    // dark
+    .text-#{$key}-dark-#{$i} {
+      color: mix(black, $val, $i * 10%);
+    }
+    .bg-#{$key}-dark-#{$i} {
+      background-color: mix(black, $val, $i * 10%);
+    }
+  }
+}
