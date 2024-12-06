@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/vite.svg"
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
     />
     <meta
       name="viewport"
@@ -13,231 +12,148 @@
     />
     <link
       rel="stylesheet"
-      href="./src/sass/index.scss"
+      href="/sass/index.scss"
     />
-
-    <title>Vite + TS</title>
+    <title>My Portfolio</title>
   </head>
   <body>
-    <nav class="navbar-primary text-white mb-4">
+    <!-- navbar -->
+    <nav class="navbar justify-between">
       <div class="container">
-        <h2 class="site-title">SASS</h2>
-        <p>A lightweight CSS library for dev ninjas</p>
+        <h1 class="site-title">Shinobi Designs</h1>
+        <ul class="display-f">
+          <li class="ml-1 text-hover-secondary">
+            <a href="#work">Our Work</a>
+          </li>
+          <li class="ml-1 text-hover-secondary">
+            <a href="#about">About Us</a>
+          </li>
+        </ul>
       </div>
     </nav>
 
-    <div class="container">
-      <!-- colors -->
-      <h2 class="mb-2">Colors</h2>
-      <span class="text-primary">primary text</span>
-      |
-      <span class="text-secondary">secondary text</span>
-      |
-      <span class="text-error">error text</span>
-      |
-      <span class="text-info">info text</span>
-      |
-      <span class="text-blue">blue text</span>
-      |
-      <span class="text-red">red text</span>
-      |
-      <span class="text-green">green text</span>
-      |
-      <span class="text-yellow">yellow text</span>
-      |
-      <span class="text-purple">purple text</span>
-      |
-      <span class="text-orange">orange text</span>
-      |
-      <span class="text-gray">gray text</span>
+    <!-- intro -->
+    <div class="container mt-5">
+      <div class="row justify-center">
+        <div class="col-12-xs col-5-md">
+          <h2>
+            <div class="font-xxl">Black-Belt</div>
+            <div class="font-xxl text-secondary">Your Website</div>
+          </h2>
+          <p class="text-gray mt-2 mb-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <a
+            href="#work"
+            class="btn-outlined-secondary text-secondary text-hover-white"
+          >
+            View Our Work
+          </a>
+        </div>
+        <div class="col-12-xs col-5-md">
+          <img
+            src="./img/laptop.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
 
-      <br />
-      <br />
-
-      <span class="bg-primary text-white">bg primary</span>
-      |
-      <span class="bg-secondary text-white">bg secondary</span>
-      |
-      <span class="bg-error text-white">bg error</span>
-      |
-      <span class="bg-info text-white">bg info</span>
-      |
-      <span class="bg-blue text-white">bg blue</span>
-      |
-      <span class="bg-red text-white">bg red</span>
-      |
-      <span class="bg-green text-white">bg green</span>
-      |
-      <span class="bg-yellow text-white">bg yellow</span>
-      |
-      <span class="bg-purple text-white">bg purple</span>
-      |
-      <span class="bg-orange text-white">bg orange</span>
-      |
-      <span class="bg-gray text-white">bg gray</span>
-      |
-
-      <br />
-      <br />
-
-      <span class="bg-primary-dark-8 text-white">primary dark 8</span>
-      |
-      <span class="bg-primary-dark-6 text-white">primary dark 6</span>
-      |
-      <span class="bg-primary-dark-4 text-white">primary dark 4</span>
-      |
-      <span class="bg-primary-dark-2 text-white">primary dark 2</span>
-      |
-      <span class="bg-primary text-white">primary</span>
-      |
-      <span class="bg-primary-light-2 text-white">primary light 2</span>
-      |
-      <span class="bg-primary-light-4 text-white">primary light 4</span>
-      |
-      <span class="bg-primary-light-6 text-white">primary light 6</span>
-      |
-      <span class="bg-primary-light-8 text-white">primary light 8</span>
-      |
-
-      <br />
-      <br />
-      <a
-        href="#"
-        class="text-primary text-hover-orange-light-1"
-      >
-        hover me
-      </a>
-
-      <hr class="mt-4 mb-4" />
-
-      <!-- font sizes -->
-      <h2 class="mb-2">Font Sizes</h2>
-      <div class="font-sm">this is small font</div>
-      <div class="font-md">this is medium font</div>
-      <div class="font-lg">this is large font</div>
-      <div class="font-xl">this is extra large font</div>
-      <div class="font-xxl">this is extra, extra large font</div>
-
-      <hr class="mt-4 mb-4" />
-
-      <!-- buttons -->
-      <h2 class="mb-2">Buttons</h2>
-      <a
-        href="#"
-        class="btn"
-      >
-        default btn
-      </a>
-      <a
-        href="#"
-        class="btn-primary text-white"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-secondary text-white"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-error text-white"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-info"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-outlined-purple text-purple text-hover-white"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-outlined-orange text-orange text-hover-white"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-complement-purple"
-      >
-        click me
-      </a>
-      <a
-        href="#"
-        class="btn-complement-primary"
-      >
-        click me
-      </a>
-
-      <hr class="mt-4 mb-4" />
-
-      <!-- cards -->
-      <h2 class="mb-2">Cards</h2>
-      <div class="card">
-        <h1 class="card-title">This is a title</h1>
-        <p class="card-body">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. In sunt, quo
-          totam aliquam praesentium ducimus tempore sapiente quia nulla optio?
-          Lorem ipsum, dolor sit amet consectetur
-          <a href="">adipisicing elit</a>
-          . Libero laboriosam laborum exercitationem autem commodi voluptas odio
-          aliquid ut velit doloremque minima, quaerat dolores, corporis
-          consequuntur totam nam id veniam maxime.
+    <!-- about -->
+    <section
+      id="about"
+      class="bg-secondary-light-9 mt-5 pt-4 pb-4"
+    >
+      <div class="container">
+        <h2 class="mb-2">About Shinobi Designs</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ipsam
+          animi aliquid sequi fuga, nam nesciunt dolore libero dolorem
+          exercitationem aliquam cupiditate atque illo, quae dicta doloribus et?
+          Ab ipsam inventore quam asperiores, sequi unde tenetur accusamus,
+          distinctio magni necessitatibus quis deserunt id alias. Iste eum ea
+          labore rerum voluptatibus.
+        </p>
+        <p class="mt-1">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta nam,
+          corrupti dolorum inventore perspiciatis id illum repellat iste amet
+          sapiente ducimus nihil molestias quasi, totam, ratione minima
+          molestiae blanditiis iure consequatur praesentium debitis. Nulla
+          maiores doloremque tempore nobis dolorum amet!
         </p>
       </div>
+    </section>
 
-      <hr class="mt-4 mb-4" />
-
-      <!-- grid system -->
-      <h2 class="mb-2">Grid System</h2>
-      <div class="row gap-2 justify-center">
-        <div class="col-12-xs col-5-sm col-3-xl">
-          <div class="card">
-            <h3 class="card-title">Hello, ninjas</h3>
-            <p class="card-body">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
+    <!-- work section -->
+    <section
+      id="work"
+      class="mt-5"
+    >
+      <div class="container">
+        <h2 class="mb-2">Some of Our Work</h2>
+        <div class="row gap-2">
+          <div class="col-12-xs col-6-md col-3-lg">
+            <div class="card p-0">
+              <h3 class="card-title m-1">Mario Club</h3>
+              <img
+                src="./img/mario.png"
+                alt=""
+              />
+              <p class="m-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
+                hic!
+              </p>
+            </div>
+          </div>
+          <div class="col-12-xs col-6-md col-3-lg">
+            <div class="card p-0">
+              <h3 class="card-title m-1">Ninja Food</h3>
+              <img
+                src="./img/food.png"
+                alt=""
+              />
+              <p class="m-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
+                hic!
+              </p>
+            </div>
+          </div>
+          <div class="col-12-xs col-6-md col-3-lg">
+            <div class="card p-0">
+              <h3 class="card-title m-1">Just Add Marmite</h3>
+              <img
+                src="./img/marmite.png"
+                alt=""
+              />
+              <p class="m-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
+                hic!
+              </p>
+            </div>
+          </div>
+          <div class="col-12-xs col-6-md col-3-lg">
+            <div class="card p-0">
+              <h3 class="card-title m-1">Ninja Notes</h3>
+              <img
+                src="./img/notes.png"
+                alt=""
+              />
+              <p class="m-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
+                hic!
+              </p>
+            </div>
           </div>
         </div>
-        <div class="col-12-xs col-5-sm col-3-xl">
-          <div class="card">
-            <h3 class="card-title">Hello, ninjas</h3>
-            <p class="card-body">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
-        </div>
-        <div class="col-12-xs col-5-sm col-3-xl">
-          <div class="card">
-            <h3 class="card-title">Hello, ninjas</h3>
-            <p class="card-body">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
-        </div>
-        <div class="col-12-xs col-5-sm col-3-xl">
-          <div class="card">
-            <h3 class="card-title">Hello, ninjas</h3>
-            <p class="card-body">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
+        <div class="row justify-center mt-2">
+          <button class="btn-secondary text-white font-md">View All</button>
         </div>
       </div>
+    </section>
 
-      <hr class="mt-4 mb-4" />
-
-      <!-- utilities -->
-
-      <hr class="mt-4 mb-4" />
-    </div>
+    <!-- footer -->
+    <footer class="bg-gray-light-7 pt-3 pb-3 mt-5">
+      <div class="container">copyright 2021 Shinobi Designs</div>
+    </footer>
   </body>
 </html>
