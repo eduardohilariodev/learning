@@ -5,7 +5,8 @@
             "bmewburn.vscode-intelephense-client",
             "mehedidracula.php-namespace-resolver",
             "shufo.vscode-blade-formatter",
-            "jacovanc.php-auto-strict-types"
+            "jacovanc.php-auto-strict-types",
+            "amirmarmul.laravel-blade-vscode"
         ]
     },
     "folders": [

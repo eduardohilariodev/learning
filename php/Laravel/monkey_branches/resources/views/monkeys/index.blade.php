@@ -16,8 +16,13 @@
 
     <ul>
       <li>
-        <a href="">
+        <a href="/monkeys/{{ $monkeys[0]["id"] }}">
           {{ $monkeys[0]["name"] }}
+        </a>
+      </li>
+      <li>
+        <a href="/monkeys/{{ $monkeys[1]["id"] }}">
+          {{ $monkeys[1]["name"] }}
         </a>
       </li>
     </ul>
