@@ -4,7 +4,8 @@
             "xdebug.php-debug",
             "bmewburn.vscode-intelephense-client",
             "mehedidracula.php-namespace-resolver",
-            "amirmarmul.laravel-blade-vscode"
+            "shufo.vscode-blade-formatter",
+            "jacovanc.php-auto-strict-types"
         ]
     },
     "folders": [
