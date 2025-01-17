@@ -1,31 +1,21 @@
-<html lang="en">
+<x-layout>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    >
-    <title>Monkey Branches | Home</title>
-  </head>
+  <h2>Currently Available Monkeys</h2>
 
-  <body>
-    <h2>Currently Available Monkeys</h2>
+  <p>{{ $greeting }}</p>
 
-    <p>{{ $greeting }}</p>
+  @if ($greeting == "hello")
+    <p>Hi from if</p>
+  @endif
 
-    <ul>
+  <ul>
+    @foreach ($monkeys as $monkey)
       <li>
-        <a href="/monkeys/{{ $monkeys[0]["id"] }}">
-          {{ $monkeys[0]["name"] }}
+        <p>{{ $monkey["name"] }}</p>
+        <a href="/monkeys/{{ $monkey["id"] }}">
+          View Details
         </a>
       </li>
-      <li>
-        <a href="/monkeys/{{ $monkeys[1]["id"] }}">
-          {{ $monkeys[1]["name"] }}
-        </a>
-      </li>
-    </ul>
-  </body>
-
-</html>
+    @endforeach
+  </ul>
+</x-layout>

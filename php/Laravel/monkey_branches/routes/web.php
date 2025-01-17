@@ -13,22 +13,28 @@ Route::get('/', function () {
 Route::get("/monkeys", function (): View {
     $monkeys = [
         [
-            'id' => 1,
+            'id' => "1",
             'name' => 'George',
             'skill' => 95
         ],
         [
-            'id' => 2,
+            'id' => "2",
             'name' => 'Bubbles',
             'skill' => 88
         ],
         [
-            'id' => 3,
+            'id' => "3",
             'name' => 'Winston',
             'skill' => 92
         ]
     ];
-    return view('monkeys.index', ["greeting" => "hello", "monkeys" => $monkeys]);
+    return view(
+        'monkeys.index',
+        [
+            "greeting" => "hello",
+            "monkeys" => $monkeys
+        ]
+    );
 });
 
 Route::get("/monkeys/{id}", function (int $id): View {
