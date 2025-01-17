@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\View\View;
 
-Route::get('/', function () {
+Route::get('/', function (): View {
     return view('welcome');
 });
 
@@ -37,6 +37,12 @@ Route::get("/monkeys", function (): View {
     );
 });
 
-Route::get("/monkeys/{id}", function (int $id): View {
+
+Route::get('/monkeys/create', function (): View {
+    return view('monkeys.create');
+});
+
+// Wildcard route `{id}`
+Route::get("/monkeys/{id}", function (string $id): View {
     return view('monkeys.show', ["id" => $id]);
 });
