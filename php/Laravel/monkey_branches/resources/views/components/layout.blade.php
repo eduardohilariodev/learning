@@ -7,6 +7,8 @@
       content="width=device-width, initial-scale=1.0"
     >
     <title>Monkey Branches</title>
+
+    @vite('resources/css/app.css')
   </head>
 
   <body>
