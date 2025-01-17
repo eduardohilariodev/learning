@@ -20,7 +20,7 @@ Route::get("/monkeys", function (): View {
         [
             'id' => "2",
             'name' => 'Bubbles',
-            'skill' => 88
+            'skill' => 65
         ],
         [
             'id' => "3",
