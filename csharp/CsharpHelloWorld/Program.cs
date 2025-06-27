@@ -10,19 +10,15 @@ namespace CsharpHelloWorld
     {
         static void Main()
         {
-            string characterName = "George";
-            int characterAge = 35;
+            /* -------------------------------------------------------------- */
+            /*                           DATA TYPES                           */
+            /* -------------------------------------------------------------- */
 
-            Console.WriteLine("There once was a man named " + characterName);
-            Console.WriteLine("He was " + characterAge + " years old");
-
-            characterName = "Mike";
-            characterAge = 25;
-
-            Console.WriteLine("He really liked the name " + characterName);
-            Console.WriteLine("But didn't like being " + characterAge);
-
-            // Console.ReadLine();
+            string phrase = "Giraffe Academy";
+            char grade = 'A';
+            int age = 30;
+            double gpa = 3.3;
+            bool isStudent = true;
         }
     }
 }
